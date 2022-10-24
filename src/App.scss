@@ -1,0 +1,46 @@
+.App {
+  text-align: center;
+  font-size: 16px;
+}
+
+.App-header {
+  font-size: 2rem;
+  margin: 2rem 0;
+}
+
+.row-one{
+  margin-bottom: 2rem;
+}
+
+
+form{
+ > *{
+  max-width: 350px;
+  display: flex;
+  justify-content: center;
+ }
+  .form-group{
+    margin-bottom: 1rem;
+    label{
+      width: 100%;
+      text-align:left;
+    }
+  }
+  .btn{
+    width: 100%;
+    display: flex;   
+  }
+}
+
+#totalColumn{
+  font-size: 3rem;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.table-container{
+  margin-top: 2rem;
+}
+
+
