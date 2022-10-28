@@ -8,7 +8,27 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      expenses:[],
+      expenses:[
+        {
+          date: "2021-01-01",
+          description: "A",
+          location: "One",
+          amount: 1,
+        },
+        {
+          date: "2021-01-01",
+          description: "B",
+          location: "Two",
+          amount: 2,
+        },
+        {
+          date: "2021-01-01",
+          description: "C",
+          location: "Three",
+          amount: 3,
+        },
+      ],
+      sumExpenses: "",
       date: "",
       description: "",
       location: "",
