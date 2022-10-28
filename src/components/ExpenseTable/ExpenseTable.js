@@ -2,7 +2,7 @@ import React from 'react';
 
 const Table = props => {
     return(
-        <table class="table table-bordered">
+      <table className="table table-bordered">
         <thead>
           <tr>
             <th scope="col">Date</th>
@@ -19,8 +19,8 @@ const Table = props => {
                     <td>{expense.date}</td>
                     <td>{expense.description}</td>
                     <td>{expense.location}</td>
-                    <td>{expense.amount}</td>
-                    <td><td><button type="button" class="btn btn-danger">X</button></td></td>
+                    <td>${expense.amount}</td>
+                    <td><button type="button" className="btn btn-danger">X</button></td>
                 </tr>
             )
             })

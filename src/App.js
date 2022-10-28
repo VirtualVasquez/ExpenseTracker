@@ -1,5 +1,6 @@
 import './App.scss';
 import React from 'react';
+import ExpenseForm from './components/ExpenseForm/ExpenseForm'
 import Table from './components/ExpenseTable/ExpenseTable'
 
 // function App() {
@@ -8,14 +9,47 @@ class App extends React.Component{
     super(props)
     this.state = {
       expenses:[
-        {
-          date:"07/07/2007",
-          description: "Gambling",
-          location: "Hard Rock Casino",
-          amount: "$777",
-        }
-      ]
+      ],
+      date: "",
+      description: "",
+      location: "",
+      amount: "",
     }
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.logExpense = this.logExpense.bind(this);
+  }
+
+  handleInputChange(event){
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      [name]: value
+    });
+      
+  }
+
+  handleSubmit(event){
+    event.preventDefault();
+    this.logExpense();
+  }
+
+  logExpense(){
+    let currentExpense = {
+      date: this.state.date,
+      description: this.state.description,
+      location: this.state.location,
+      amount: this.state.amount
+    }
+    this.state.expenses.push(currentExpense);
+    this.setState({
+      date: "",
+      description: "",
+      location: "",
+      amount: "",
+    })
   }
 
   render(){
@@ -26,41 +60,19 @@ class App extends React.Component{
           <h1>Expense Manager</h1>
         </header>
 
-        <body className="container">
+        <div className="container">
           
           <div className="row">
 
             <div className="col col-md-4 col-sm-12 form-column">
-              <form>
-                  
-                <h2>Add Expense</h2>
-                <div className="form-group">
-                  <label for="date">Date</label>
-                  <input type="date" className="form-control" id="inputDate" aria-describedby="dateHelp" placeholder="Enter Date">
-                  </input>
-                </div>
-
-                <div className="form-group">
-                  <label for="description">Description</label>
-                  <input type="text" className="form-control" id="inputDescription" placeholder="Description">
-                  </input>
-                </div>
-
-                <div className="form-group">
-                  <label for="location">Location</label>
-                  <input type="text" className="form-control" id="inputLocation" placeholder="location">
-                  </input>
-                </div>
-
-                <div className="form-group">
-                  <label for="amount">Amount</label>
-                  <input type="number" className="form-control" id="inputAmount" placeholder="Amount">
-                  </input>
-                </div>
-
-                <button type="submit" class="btn btn-primary">Submit</button>
-
-              </form>
+              <ExpenseForm
+                date={this.state.date}
+                description={this.state.description}
+                location={this.state.location}
+                amount={this.state.amount}
+                handleInputChange={this.handleInputChange}
+                handleSubmit={this.handleSubmit}              
+              />
             </div>
 
             <div className="col col-md-8 col-sm-12">
@@ -70,13 +82,12 @@ class App extends React.Component{
               </div>
               <Table
                 expenses={this.state.expenses}
+                
               />
-
-
-
             </div>
+            
           </div>
-        </body>
+        </div>
       </div>
     );
   }
