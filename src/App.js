@@ -28,7 +28,6 @@ class App extends React.Component{
           amount: 3,
         },
       ],
-      sumExpenses: "",
       date: "",
       description: "",
       location: "",
@@ -110,10 +109,6 @@ class App extends React.Component{
             </div>
 
             <div className="col col-md-8 col-sm-12">
-
-              <div>
-                <p>Total Amount Spent: $1,000,000</p>
-              </div>
               <Table
                 expenses={this.state.expenses}
                 removeExpense={this.removeExpense}
