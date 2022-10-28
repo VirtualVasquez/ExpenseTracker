@@ -8,8 +8,7 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      expenses:[
-      ],
+      expenses:[],
       date: "",
       description: "",
       location: "",
@@ -18,6 +17,7 @@ class App extends React.Component{
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.logExpense = this.logExpense.bind(this);
+    this.removeExpense = this.removeExpense.bind(this);
   }
 
   handleInputChange(event){
@@ -43,6 +43,12 @@ class App extends React.Component{
       location: this.state.location,
       amount: this.state.amount
     }
+    for(const[key, value] of Object.entries(currentExpense)){
+      if(!value){
+        alert("Make sure all fields are filled out");
+        return;
+      }
+    }
     this.state.expenses.push(currentExpense);
     this.setState({
       date: "",
@@ -50,6 +56,14 @@ class App extends React.Component{
       location: "",
       amount: "",
     })
+  }
+
+  removeExpense = (index) => {
+    const reducedArr = [...this.state.expenses];
+
+    reducedArr.splice(index, 1);
+
+    this.setState({expenses: reducedArr})
   }
 
   render(){
@@ -82,7 +96,7 @@ class App extends React.Component{
               </div>
               <Table
                 expenses={this.state.expenses}
-                
+                removeExpense={this.removeExpense}
               />
             </div>
             

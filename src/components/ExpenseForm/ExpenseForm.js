@@ -15,6 +15,7 @@ const ExpenseForm = props => {
             aria-describedby="dateHelp"
             value={props.date}
             onChange={props.handleInputChange}
+            required
           >
           </input>
         </div>
@@ -29,6 +30,7 @@ const ExpenseForm = props => {
             placeholder="Description"
             value={props.description}
             onChange={props.handleInputChange}
+            required
           >
           </input>
         </div>
@@ -43,6 +45,7 @@ const ExpenseForm = props => {
             placeholder="Location"
             value={props.location}
             onChange={props.handleInputChange}
+            required
           >
           </input>
         </div>
@@ -59,6 +62,7 @@ const ExpenseForm = props => {
             placeholder="Amount"
             value={props.amount}
             onChange={props.handleInputChange}
+            required
           >
           </input>
         </div>
