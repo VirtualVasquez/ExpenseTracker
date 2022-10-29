@@ -13,7 +13,7 @@ const Table = props => {
           </tr>
         </thead>
         <tbody>
-          {props.expenses.map(function(expense, index){
+          {Array.isArray(props.expenses) ? props.expenses.map(function(expense, index){
             return(
                 <tr key={index}>
                     <td>{expense.date}</td>
@@ -31,7 +31,7 @@ const Table = props => {
                     </td>
                 </tr>
             )
-            })
+            }) : null
           }
         </tbody>
       </table>
