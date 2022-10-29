@@ -52,7 +52,12 @@ class App extends React.Component{
         return;
       }
     }
+
+    this.setState({
+      expenses: [...this.state.expenses, currentExpense]
+    })
     this.state.expenses.push(currentExpense);
+
     this.resetCurrentExpense();
     this.saveToLocal(this.state.expenses);
   }
