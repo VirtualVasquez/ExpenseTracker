@@ -37,6 +37,8 @@ class App extends React.Component{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.logExpense = this.logExpense.bind(this);
     this.removeExpense = this.removeExpense.bind(this);
+    this.objectifyCurrentExpense = this.objectifyCurrentExpense.bind(this);
+    this.resetCurrentExpense = this.resetCurrentExpense.bind(this);
   }
 
   handleInputChange(event){
@@ -56,12 +58,7 @@ class App extends React.Component{
   }
 
   logExpense(){
-    let currentExpense = {
-      date: this.state.currentDate,
-      description: this.state.currentDescription,
-      location: this.state.currentLocation,
-      amount: this.state.currentAmount
-    }
+    let currentExpense = this.objectifyCurrentExpense();
     for(const[key, value] of Object.entries(currentExpense)){
       if(!value){
         alert("Make sure all fields are filled out");
@@ -69,12 +66,7 @@ class App extends React.Component{
       }
     }
     this.state.expenses.push(currentExpense);
-    this.setState({
-      currentDate: "",
-      currentDescription: "",
-      currentLocation: "",
-      currentAmount: "",
-    })
+    this.resetCurrentExpense();
   }
 
   removeExpense = (index) => {
@@ -83,6 +75,24 @@ class App extends React.Component{
     reducedArr.splice(index, 1);
 
     this.setState({expenses: reducedArr})
+  }
+
+  objectifyCurrentExpense(){
+    return {
+      date: this.state.currentDate,
+      description: this.state.currentDescription,
+      location: this.state.currentLocation,
+      amount: this.state.currentAmount
+    }
+  }
+
+  resetCurrentExpense(){
+    this.setState({
+      currentDate: "",
+      currentDescription: "",
+      currentLocation: "",
+      currentAmount: "",
+    })
   }
 
   render(){
