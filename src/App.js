@@ -28,10 +28,10 @@ class App extends React.Component{
           amount: 3,
         },
       ],
-      date: "",
-      description: "",
-      location: "",
-      amount: "",
+      currentDate: "",
+      currentDescription: "",
+      currentLocation: "",
+      currentAmount: "",
     }
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -57,10 +57,10 @@ class App extends React.Component{
 
   logExpense(){
     let currentExpense = {
-      date: this.state.date,
-      description: this.state.description,
-      location: this.state.location,
-      amount: this.state.amount
+      date: this.state.currentDate,
+      description: this.state.currentDescription,
+      location: this.state.currentLocation,
+      amount: this.state.currentAmount
     }
     for(const[key, value] of Object.entries(currentExpense)){
       if(!value){
@@ -70,10 +70,10 @@ class App extends React.Component{
     }
     this.state.expenses.push(currentExpense);
     this.setState({
-      date: "",
-      description: "",
-      location: "",
-      amount: "",
+      currentDate: "",
+      currentDescription: "",
+      currentLocation: "",
+      currentAmount: "",
     })
   }
 
@@ -99,10 +99,10 @@ class App extends React.Component{
 
             <div className="col col-md-4 col-sm-12 form-column">
               <ExpenseForm
-                date={this.state.date}
-                description={this.state.description}
-                location={this.state.location}
-                amount={this.state.amount}
+                currentDate={this.state.currentDate}
+                currentDescription={this.state.currentDescription}
+                currentLocation={this.state.currentLocation}
+                currentAmount={this.state.currentAmount}
                 handleInputChange={this.handleInputChange}
                 handleSubmit={this.handleSubmit}              
               />

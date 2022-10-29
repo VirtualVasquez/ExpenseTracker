@@ -8,12 +8,12 @@ const ExpenseForm = props => {
         <div className="form-group">
           <label htmlFor="date">Date</label>
           <input
-            name="date" 
+            name="currentDate" 
             type="date"
             className="form-control" 
             id="inputDate" 
             aria-describedby="dateHelp"
-            value={props.date}
+            value={props.currentDate}
             onChange={props.handleInputChange}
             required
           >
@@ -23,12 +23,12 @@ const ExpenseForm = props => {
         <div className="form-group">
           <label htmlFor="description">Description</label>
           <input 
-            name="description"
+            name="currentDescription"
             type="text" 
             className="form-control" 
             id="inputDescription" 
             placeholder="Description"
-            value={props.description}
+            value={props.currentDescription}
             onChange={props.handleInputChange}
             required
           >
@@ -38,12 +38,12 @@ const ExpenseForm = props => {
         <div className="form-group">
           <label htmlFor="location">Location</label>
           <input 
-            name="location"
+            name="currentLocation"
             type="text" 
             className="form-control" 
             id="inputLocation" 
             placeholder="Location"
-            value={props.location}
+            value={props.currentLocation}
             onChange={props.handleInputChange}
             required
           >
@@ -53,14 +53,14 @@ const ExpenseForm = props => {
         <div className="form-group">
           <label htmlFor="amount">Amount</label>
           <input 
-            name="amount"
+            name="currentAmount"
             type="number"
             min="0.01" 
             step="0.01"
             className="form-control" 
             id="inputAmount" 
             placeholder="Amount"
-            value={props.amount}
+            value={props.currentAmount}
             onChange={props.handleInputChange}
             required
           >
