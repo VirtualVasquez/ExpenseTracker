@@ -53,12 +53,14 @@ class App extends React.Component{
       }
     }
 
+    let updatedArr;
+
     if(!this.state.expenses){
       this.setState({
         expenses: [currentExpense]
       })
     } else{
-      let updatedArr = this.state.expenses;
+      updatedArr = this.state.expenses;
       updatedArr.push(currentExpense);
       this.setState({
         expenses: updatedArr
@@ -67,7 +69,7 @@ class App extends React.Component{
     }
 
     this.resetCurrentExpense();
-    this.saveToLocal(this.state.expenses);
+    this.saveToLocal(updatedArr);
   }
 
   removeExpense = (index) => {
