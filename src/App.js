@@ -8,26 +8,7 @@ class App extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      expenses:[
-        {
-          date: "2021-01-01",
-          description: "A",
-          location: "One",
-          amount: 1,
-        },
-        {
-          date: "2021-01-01",
-          description: "B",
-          location: "Two",
-          amount: 2,
-        },
-        {
-          date: "2021-01-01",
-          description: "C",
-          location: "Three",
-          amount: 3,
-        },
-      ],
+      expenses: [],
       currentDate: "",
       currentDescription: "",
       currentLocation: "",
@@ -39,6 +20,12 @@ class App extends React.Component{
     this.removeExpense = this.removeExpense.bind(this);
     this.objectifyCurrentExpense = this.objectifyCurrentExpense.bind(this);
     this.resetCurrentExpense = this.resetCurrentExpense.bind(this);
+    this.saveToLocal = this.saveToLocal.bind(this);
+  }
+  componentDidMount(){
+    this.setState({
+      expenses: JSON.parse(localStorage.getItem('expenses'))
+    })
   }
 
   handleInputChange(event){
@@ -67,6 +54,7 @@ class App extends React.Component{
     }
     this.state.expenses.push(currentExpense);
     this.resetCurrentExpense();
+    this.saveToLocal(this.state.expenses);
   }
 
   removeExpense = (index) => {
@@ -75,6 +63,7 @@ class App extends React.Component{
     reducedArr.splice(index, 1);
 
     this.setState({expenses: reducedArr})
+    this.saveToLocal(reducedArr);
   }
 
   objectifyCurrentExpense(){
@@ -93,6 +82,11 @@ class App extends React.Component{
       currentLocation: "",
       currentAmount: "",
     })
+  }
+
+  saveToLocal(arr){
+    const local = arr;
+    localStorage.setItem("expenses", JSON.stringify(local));
   }
 
   render(){
